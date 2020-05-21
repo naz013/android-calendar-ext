@@ -1,0 +1,3 @@
+rootProject.name='Calendar Extensions'
+include ':app'
+include ':calendar-ext'
