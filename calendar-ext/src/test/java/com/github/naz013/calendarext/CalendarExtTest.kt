@@ -13,7 +13,7 @@ class CalendarExtTest {
 
     @Before
     fun before() {
-        calendar = newCalendar()
+        calendar = newCalendar().apply { timeInMillis = millis }
     }
 
     @Test
@@ -25,163 +25,176 @@ class CalendarExtTest {
 
     @Test
     fun dropMilliseconds_shouldSetMillisecondFieldToZero() {
-        calendar.timeInMillis = System.currentTimeMillis()
         calendar.dropMilliseconds()
         assertEquals(0, calendar.getMillisecond())
     }
 
     @Test
     fun isAfter() {
-        calendar.timeInMillis = millis
         assertTrue(newCalendar(millis + 1000L).isAfter(calendar))
     }
 
     @Test
     fun isBefore() {
-        calendar.timeInMillis = millis
         assertTrue(newCalendar(millis - 1000L).isBefore(calendar))
     }
 
     @Test
     fun diffInMillis_shouldHaveOneSecondDifference() {
-        calendar.timeInMillis = millis
         assertEquals(1000L, newCalendar(millis + 1000L).diffInMillis(calendar))
     }
 
     @Test
     fun diffInDays_shouldHaveOneDayDifference() {
-        calendar.timeInMillis = millis
         assertEquals(1, newCalendar(millis).apply { addDayOfMonth() }.diffInDays(calendar))
     }
 
     @Test
     fun isExactlySame() {
-        calendar.timeInMillis = millis
-        assertTrue(calendar.copy().isExactlySame(calendar))
+        assertTrue(newCalendar(millis).isExactlySame(calendar))
     }
 
     @Test
     fun isSameDateAndTime() {
+        assertTrue(newCalendar(millis).isSameDateAndTime(calendar))
     }
 
     @Test
     fun isSameTime() {
+        assertTrue(newCalendar(millis).isSameTime(calendar))
     }
 
     @Test
     fun isSameDate() {
+        assertTrue(newCalendar(millis).isSameDate(calendar))
     }
 
     @Test
     fun isLastDayOfMonth() {
+        calendar.setDate(2020, 3, 30)
+        assertTrue(calendar.isLastDayOfMonth())
     }
+
+    private fun midMonthDate(month: Int): Calendar =
+        calendar.setDate(2020, month, 15)
 
     @Test
     fun isDecember() {
+        assertTrue(midMonthDate(Calendar.DECEMBER).isDecember())
     }
 
     @Test
     fun isNovember() {
+        assertTrue(midMonthDate(Calendar.NOVEMBER).isNovember())
     }
 
     @Test
     fun isOctober() {
+        assertTrue(midMonthDate(Calendar.OCTOBER).isOctober())
     }
 
     @Test
     fun isSeptember() {
+        assertTrue(midMonthDate(Calendar.SEPTEMBER).isSeptember())
     }
 
     @Test
     fun isAugust() {
+        assertTrue(midMonthDate(Calendar.AUGUST).isAugust())
     }
 
     @Test
     fun isJuly() {
+        assertTrue(midMonthDate(Calendar.JULY).isJuly())
     }
 
     @Test
     fun isJune() {
+        assertTrue(midMonthDate(Calendar.JUNE).isJune())
     }
 
     @Test
     fun isMay() {
+        assertTrue(midMonthDate(Calendar.MAY).isMay())
     }
 
     @Test
     fun isApril() {
+        assertTrue(midMonthDate(Calendar.APRIL).isApril())
     }
 
     @Test
     fun isMarch() {
+        assertTrue(midMonthDate(Calendar.MARCH).isMarch())
     }
 
     @Test
     fun isFebruary() {
+        assertTrue(midMonthDate(Calendar.FEBRUARY).isFebruary())
     }
 
     @Test
     fun isJanuary() {
+        assertTrue(midMonthDate(Calendar.JANUARY).isJanuary())
     }
 
     @Test
     fun isMonth() {
+        assertTrue(calendar.setMonth(Calendar.APRIL).isMonth(Calendar.APRIL))
     }
+
+    private fun weekdayCalendar(dayOfWeek: Int): Calendar =
+        calendar.apply { setDayOfWeek(dayOfWeek) }
 
     @Test
     fun isSaturday() {
+        assertTrue(weekdayCalendar(Calendar.SATURDAY).isSaturday())
     }
 
     @Test
     fun isFriday() {
+        assertTrue(weekdayCalendar(Calendar.FRIDAY).isFriday())
     }
 
     @Test
     fun isThursday() {
+        assertTrue(weekdayCalendar(Calendar.THURSDAY).isThursday())
     }
 
     @Test
     fun isWednesday() {
+        assertTrue(weekdayCalendar(Calendar.WEDNESDAY).isWednesday())
     }
 
     @Test
     fun isTuesday() {
+        assertTrue(weekdayCalendar(Calendar.TUESDAY).isTuesday())
     }
 
     @Test
     fun isMonday() {
+        assertTrue(weekdayCalendar(Calendar.MONDAY).isMonday())
     }
 
     @Test
     fun isSunday() {
+        assertTrue(weekdayCalendar(Calendar.SUNDAY).isSunday())
     }
 
     @Test
     fun isDayOfWeek() {
+        assertTrue(weekdayCalendar(Calendar.SATURDAY).isDayOfWeek(Calendar.SATURDAY))
     }
 
     @Test
     fun setTime() {
-    }
-
-    @Test
-    fun takeTimeFrom() {
-    }
-
-    @Test
-    fun testTakeTimeFrom() {
+        calendar.setTime(15, 30)
+        assertEquals(15, calendar.getHourOfDay())
+        assertEquals(30, calendar.getMinute())
     }
 
     @Test
     fun setDate() {
-    }
-
-    @Test
-    fun takeDateFrom() {
-    }
-
-    @Test
-    fun testTakeDateFrom() {
     }
 
     @Test
@@ -333,40 +346,7 @@ class CalendarExtTest {
     }
 
     @Test
-    fun toCalendar() {
+    fun testCopy_mustBeExactlySame() {
+        assertTrue(calendar.copy().isExactlySame(calendar))
     }
-
-    @Test
-    fun newCalendar_shouldCreateNewCalendar() {
-    }
-
-    @Test
-    fun testToCalendar() {
-    }
-
-    @Test
-    fun testNewCalendar() {
-    }
-
-    @Test
-    fun testNewCalendar1() {
-    }
-
-    @Test
-    fun testNewCalendar2() {
-    }
-
-    @Test
-    fun testNewCalendar3() {
-    }
-
-    @Test
-    fun testNewCalendar4() {
-    }
-
-    @Test
-    fun testNewCalendar5() {
-    }
-
-
 }
