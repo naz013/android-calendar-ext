@@ -56,6 +56,8 @@ class CalendarExtTest {
 
     @Test
     fun isExactlySame() {
+        calendar.timeInMillis = millis
+        assertTrue(calendar.copy().isExactlySame(calendar))
     }
 
     @Test
