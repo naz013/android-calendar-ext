@@ -189,6 +189,12 @@ fun newCalendar(date: String, formatter: (String) -> Date?) =
 
 fun Date.toCalendar() = newCalendar().apply { time = this@toCalendar }
 
+fun Calendar.copy(): Calendar {
+    val calendar = newCalendar(timeZone)
+    calendar.timeInMillis = timeInMillis
+    return calendar
+}
+
 fun newCalendar(date: Date = Date()) = newCalendar().apply { time = date }
 
 fun newCalendar(millis: Long = 0L) =
