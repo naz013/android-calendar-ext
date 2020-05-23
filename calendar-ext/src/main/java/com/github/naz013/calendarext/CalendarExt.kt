@@ -16,8 +16,6 @@ import java.util.Locale
 import java.util.TimeZone
 import java.util.concurrent.TimeUnit
 
-
-
 fun Calendar.dropSeconds() = setSecond(0)
 
 fun Calendar.dropMilliseconds() = setMillisecond(0)
@@ -94,19 +92,23 @@ fun Calendar.setTime(hourOfDay: Int, minute: Int, second: Int = 0) = apply {
     setSecond(second)
 }
 
-fun Calendar.setTimeFrom(calendar: Calendar) =
+fun Calendar.takeTimeFrom(calendar: Calendar) =
     setTime(calendar.getHourOfDay(), calendar.getMinute(), calendar.getSecond())
 
-fun Calendar.setTimeFrom(date: Date) = setTimeFrom(date.toCalendar())
+fun Calendar.takeTimeFrom(date: Date) = takeTimeFrom(newCalendar(date))
 
 fun Calendar.setDate(year: Int, month: Int, dayOfMonth: Int) = apply {
     set(year, month, dayOfMonth)
 }
 
-fun Calendar.setDateFrom(calendar: Calendar) =
+fun Calendar.takeDateFrom(calendar: Calendar) =
     setDate(calendar.getYear(), calendar.getMonth(), calendar.getDayOfMonth())
 
-fun Calendar.setDateFrom(date: Date) = setDateFrom(date.toCalendar())
+fun Calendar.takeDateFrom(date: Date) = takeDateFrom(newCalendar(date))
+
+fun Calendar.setMillis(millis: Long) = apply { timeInMillis = millis }
+
+fun Calendar.addMillis(millis: Long) = apply { timeInMillis += millis }
 
 fun Calendar.setMillisecond(millisecond: Int) =
     apply { this.set(MILLISECOND, millisecond) }
@@ -182,14 +184,15 @@ fun Calendar.addYears(years: Int) = apply { this.add(YEAR, years) }
 fun String.toCalendar(formatter: (String) -> Date?) =
     formatter.invoke(this).takeIf { it != null }?.toCalendar() ?: newCalendar()
 
-fun Long.toCalendar() = newCalendar().apply { timeInMillis = this@toCalendar }
+fun newCalendar(date: String, formatter: (String) -> Date?) =
+    formatter.invoke(date)?.let { newCalendar(it) } ?: newCalendar()
 
 fun Date.toCalendar() = newCalendar().apply { time = this@toCalendar }
 
-fun newCalendar(date: Date = Date()) = date.toCalendar()
+fun newCalendar(date: Date = Date()) = newCalendar().apply { time = date }
 
 fun newCalendar(millis: Long = 0L) =
-    if (millis == 0L) newCalendar() else millis.toCalendar()
+    if (millis == 0L) newCalendar() else newCalendar().apply { timeInMillis = millis }
 
 fun newCalendar(): Calendar = Calendar.getInstance()
 
