@@ -23,10 +23,12 @@ fun Date.second() = toCalendar().getSecond()
 
 fun Date.minute() = toCalendar().getMinute()
 
-fun Date.hour() = toCalendar().getHourOfDay()
+fun Date.hour() = toCalendar().getHour()
+
+fun Date.hourOfDay() = toCalendar().getHourOfDay()
 
 fun Date.year() = toCalendar().getYear()
 
 fun Date.month() = toCalendar().getMonth()
 
-fun Date.day() = toCalendar().getDayOfMonth()
+fun Date.dayOfMonth() = toCalendar().getDayOfMonth()

@@ -129,19 +129,19 @@ fun Calendar.setHour(hour: Int) = apply { this.set(HOUR, hour) }
 
 fun Calendar.getHour() = get(HOUR)
 
-fun Calendar.setHourOfDay(hour: Int) = apply { this.set(HOUR_OF_DAY, hour) }
+fun Calendar.setHourOfDay(hourOfDay: Int) = apply { this.set(HOUR_OF_DAY, hourOfDay) }
 
 fun Calendar.getHourOfDay() = get(HOUR_OF_DAY)
 
-fun Calendar.setDayOfMonth(day: Int) = apply { this.set(DAY_OF_MONTH, day) }
+fun Calendar.setDayOfMonth(dayOfMonth: Int) = apply { this.set(DAY_OF_MONTH, dayOfMonth) }
 
 fun Calendar.getDayOfMonth() = get(DAY_OF_MONTH)
 
-fun Calendar.setDayOfWeek(day: Int) = apply { this.set(DAY_OF_WEEK, day) }
+fun Calendar.setDayOfWeek(dayOfWeek: Int) = apply { this.set(DAY_OF_WEEK, dayOfWeek) }
 
 fun Calendar.getDayOfWeek() = get(DAY_OF_WEEK)
 
-fun Calendar.setDayOfYear(day: Int) = apply { this.set(DAY_OF_YEAR, day) }
+fun Calendar.setDayOfYear(dayOfYear: Int) = apply { this.set(DAY_OF_YEAR, dayOfYear) }
 
 fun Calendar.getDayOfYear() = get(DAY_OF_YEAR)
 
