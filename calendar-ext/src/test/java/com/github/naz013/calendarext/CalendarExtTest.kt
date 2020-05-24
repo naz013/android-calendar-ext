@@ -195,154 +195,187 @@ class CalendarExtTest {
 
     @Test
     fun setDate() {
+        calendar.setDate(2020, 4, 15)
+        assertTrue(calendar.isMay())
+        assertEquals(2020, calendar.getYear())
+        assertEquals(15, calendar.getDayOfMonth())
     }
 
     @Test
     fun setMillis() {
+        val millis = System.currentTimeMillis()
+        calendar.setMillis(millis)
+        assertEquals(millis, calendar.timeInMillis)
     }
 
     @Test
     fun addMillis() {
+        val millis = System.currentTimeMillis()
+        calendar.setMillis(millis)
+        calendar.addMillis(5000L)
+        assertEquals(millis + 5000L, calendar.timeInMillis)
     }
 
     @Test
     fun setMillisecond() {
+        calendar.setMillisecond(500)
+        assertEquals(500, calendar.getMillisecond())
     }
 
     @Test
     fun getLastDayOfMonth() {
-    }
-
-    @Test
-    fun getMillisecond() {
+        calendar.setDate(2020, 3, 15)
+        assertEquals(30, calendar.getLastDayOfMonth())
     }
 
     @Test
     fun setSecond() {
-    }
-
-    @Test
-    fun getSecond() {
+        calendar.setSecond(10)
+        assertEquals(10, calendar.getSecond())
     }
 
     @Test
     fun setMinute() {
-    }
-
-    @Test
-    fun getMinute() {
+        calendar.setMinute(10)
+        assertEquals(10, calendar.getMinute())
     }
 
     @Test
     fun setHour() {
-    }
-
-    @Test
-    fun getHour() {
+        calendar.setHour(10)
+        assertEquals(10, calendar.getHour())
     }
 
     @Test
     fun setHourOfDay() {
-    }
-
-    @Test
-    fun getHourOfDay() {
+        calendar.setHourOfDay(10)
+        assertEquals(10, calendar.getHourOfDay())
     }
 
     @Test
     fun setDayOfMonth() {
-    }
-
-    @Test
-    fun getDayOfMonth() {
+        calendar.setDayOfMonth(10)
+        assertEquals(10, calendar.getDayOfMonth())
     }
 
     @Test
     fun setDayOfWeek() {
-    }
-
-    @Test
-    fun getDayOfWeek() {
+        calendar.setDayOfWeek(3)
+        assertEquals(3, calendar.getDayOfWeek())
     }
 
     @Test
     fun setDayOfYear() {
-    }
-
-    @Test
-    fun getDayOfYear() {
+        calendar.setDayOfYear(10)
+        assertEquals(10, calendar.getDayOfYear())
     }
 
     @Test
     fun setMonth() {
-    }
-
-    @Test
-    fun getMonth() {
+        calendar.setMonth(10)
+        assertEquals(10, calendar.getMonth())
     }
 
     @Test
     fun setYear() {
-    }
-
-    @Test
-    fun getYear() {
-    }
-
-    @Test
-    fun addMillisecond() {
-    }
-
-    @Test
-    fun addMilliseconds() {
+        calendar.setYear(2025)
+        assertEquals(2025, calendar.getYear())
     }
 
     @Test
     fun addSecond() {
+        calendar.setSecond(0)
+        val second = calendar.getSecond()
+        calendar.addSecond()
+        assertEquals(second + 1, calendar.getSecond())
     }
 
     @Test
     fun addSeconds() {
+        calendar.setSecond(0)
+        val second = calendar.getSecond()
+        calendar.addSeconds(5)
+        assertEquals(second + 5, calendar.getSecond())
     }
 
     @Test
     fun addMinute() {
+        calendar.setMinute(0)
+        val minute = calendar.getMinute()
+        calendar.addMinute()
+        assertEquals(minute + 1, calendar.getMinute())
     }
 
     @Test
     fun addMinutes() {
+        calendar.setMinute(0)
+        val minute = calendar.getMinute()
+        calendar.addMinutes(5)
+        assertEquals(minute + 5, calendar.getMinute())
     }
 
     @Test
     fun addHour() {
+        calendar.setHourOfDay(0)
+        val hourOfDay = calendar.getHourOfDay()
+        calendar.addHourOfDay()
+        assertEquals(hourOfDay + 1, calendar.getHourOfDay())
     }
 
     @Test
     fun addHours() {
+        calendar.setHourOfDay(0)
+        val hourOfDay = calendar.getHourOfDay()
+        calendar.addHoursOfDay(5)
+        assertEquals(hourOfDay + 5, calendar.getHourOfDay())
     }
 
     @Test
     fun addDayOfMonth() {
+        calendar.setDayOfMonth(5)
+        val dayOfMonth = calendar.getDayOfMonth()
+        calendar.addDayOfMonth()
+        assertEquals(dayOfMonth + 1, calendar.getDayOfMonth())
     }
 
     @Test
     fun addDaysOfMonth() {
+        calendar.setDayOfMonth(5)
+        val dayOfMonth = calendar.getDayOfMonth()
+        calendar.addDaysOfMonth(5)
+        assertEquals(dayOfMonth + 5, calendar.getDayOfMonth())
     }
 
     @Test
     fun addMonth() {
+        calendar.setMonth(5)
+        val month = calendar.getMonth()
+        calendar.addMonth()
+        assertEquals(month + 1, calendar.getMonth())
     }
 
     @Test
     fun addMonths() {
+        calendar.setMonth(5)
+        val month = calendar.getMonth()
+        calendar.addMonths(5)
+        assertEquals(month + 5, calendar.getMonth())
     }
 
     @Test
     fun addYear() {
+        calendar.setYear(2020)
+        val year = calendar.getYear()
+        calendar.addYear()
+        assertEquals(year + 1, calendar.getYear())
     }
 
     @Test
     fun addYears() {
+        calendar.setYear(2020)
+        val year = calendar.getYear()
+        calendar.addYears(5)
+        assertEquals(year + 5, calendar.getYear())
     }
 
     @Test

@@ -153,10 +153,6 @@ fun Calendar.setYear(year: Int) = apply { this.set(YEAR, year) }
 
 fun Calendar.getYear() = get(YEAR)
 
-fun Calendar.addMillisecond() = addMilliseconds(1)
-
-fun Calendar.addMilliseconds(millis: Int) = apply { this.add(MILLISECOND, millis) }
-
 fun Calendar.addSecond() = addSeconds(1)
 
 fun Calendar.addSeconds(seconds: Int) = apply { this.add(SECOND, seconds) }
@@ -165,9 +161,9 @@ fun Calendar.addMinute() = addMinutes(1)
 
 fun Calendar.addMinutes(minutes: Int) = apply { this.add(MINUTE, minutes) }
 
-fun Calendar.addHour() = addHours(1)
+fun Calendar.addHourOfDay() = addHoursOfDay(1)
 
-fun Calendar.addHours(hours: Int) = apply { this.add(HOUR_OF_DAY, hours) }
+fun Calendar.addHoursOfDay(hours: Int) = apply { this.add(HOUR_OF_DAY, hours) }
 
 fun Calendar.addDayOfMonth() = addDaysOfMonth(1)
 
