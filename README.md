@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-     implementation 'com.github.naz013:android-calendar-ext:1.0.2'
+     implementation 'com.github.naz013:android-calendar-ext:1.0.3'
 }
 ```
 
